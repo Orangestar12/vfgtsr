@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SongDropper - VIRUSFUCKERGIGATROJANSUPERRANSOMWARE.COM</title>
+    <!--<link rel="icon" type="image/png" href="/favicon.png">-->
+    <meta name="viewport" content="width=device-width">
+    <style>
+        #youtube-player {
+            width: 100%;
+        }
+        #drops p {
+            display: inline-block;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="youtube-player"></div>
+    <p>Enter a video ID below.</p>
+    <p id="freeze">Press Z to mark the freeze_time (when the "establishing connection" text goes away)</p>
+    <p id="drop">Press X to mark the drop_time (when the text starts getting typed)</p>
+    <p id="chill">Press C to mark the chill_out_time (when the song starts winding down)</p>
+    <p id="final">Press V to mark the final_drop_time (when the song ramps back up and goes nuts)</p>
+    <p id="blackout">Press B to mark the blackout_time (when the song finishes and everything goes dark)</p>
+    <p>Press space to mark any other drop times when random events happen</p>
+    <p>If you miss the time you were looking for, you can seek backwards with the player above and try again.</p>
+    <input id="video-id" type="text" /> <button id="submit">Play video</button>
+    <p>[</p>
+    <div id="drops"></div>
+    <p>]</p>
+    <p>If you accidentally mark a drop, click it in the list above to remove it.</p>
+    <p>Copy and paste this whole page and send it to me when you're done</p>
+    <script src="./assets/loadplayer.js"></script>
+    <script>
+'use strict';
+let ready = 0;
+
+function onPlayerReady() {
+    ready = 1;
+}
+
+document.querySelector('#submit').addEventListener('click', () => {
+    if (!ready) {
+        alert('The YouTube player hasn\'t loaded yet. Give us a mo.');
+        return
+    }
+    player.loadVideoById(document.querySelector('#video-id').value);
+});
+
+function getRoundedTime() {
+    return Math.floor( player.getCurrentTime() * 10 ) / 10;
+}
+
+function addTo(id) {
+    let elem = document.getElementById(id);
+
+    if (elem.querySelector('p')) {
+        elem.querySelector('p').textContent = getRoundedTime();
+        return
+    }
+
+    elem.appendChild(document.createElement('p')).textContent = getRoundedTime();
+}
+
+let list_of_ids = {
+    z: 'freeze',
+    x: "drop",
+    c: "chill",
+    v: "final",
+    b: "blackout"
+}
+
+let drops = document.getElementById('drops');
+
+document.body.addEventListener('keydown', (e) => {
+    if (list_of_ids.hasOwnProperty(e.key)) {
+        addTo(list_of_ids[e.key]);
+    }
+    else if (e.key == " ") {
+        let elem = drops.appendChild(document.createElement('p'));
+        elem.textContent = getRoundedTime() + ',';
+        elem.addEventListener('click', (e) => {
+            e.target.remove();
+        })
+    }
+});
+    </script>
+</body>
+</html>

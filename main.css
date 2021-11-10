@@ -1,0 +1,189 @@
+@keyframes dottodottodotto {
+    0% {
+        content: '   ';
+    }
+    25% {
+        content: '.  ';
+    }
+    50% {
+        content: '.. ';
+    }
+    75% {
+        content: '...';
+    }
+    100% {
+        content: '   ';
+    }
+}
+
+@keyframes blink {
+    50% {
+        color: transparent;
+    }
+    100% {
+        color: var(--error-color);
+    }
+}
+
+@keyframes flush {
+    0% {
+        background: black;
+    }
+    50% {
+        background: #440000;
+    }
+    100% {
+        background: black;
+    }
+}
+
+body {
+    --main-text-color: #11ff4d;
+    --error-color: #dfbd00;
+    background: black;
+
+    /* default text styles */
+    color: var(--main-text-color);
+    font-family: monospace; /* TODO: @font-face */
+    font-size: 16pt;
+    white-space: pre;
+    overflow: hidden;
+    user-select: none;
+}
+body.flushed {
+    animation: flush 1s linear infinite;
+}
+
+#youtube-player {
+    visibility: hidden; /* don't show the player */
+    position: absolute; /* don't count the player in the document flow */
+    pointer-events: none; /* don't let the user click the player */
+}
+
+#connection, #bootloader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.SeveralPeopleAreTyping::after {
+    content: '   ';
+    animation: dottodottodotto 1s linear infinite;
+    white-space: pre;
+}
+
+div#terminal {
+    position: absolute;
+    overflow: hidden;
+    left: 8px;
+    top: 8px;
+    right: 8px;
+    bottom: 8px;
+}
+
+div#panic_region {
+    position: fixed;
+    bottom: 4px;
+    right: 4px;
+
+    font-size: 8pt;
+    font-family: sans-serif;
+
+    z-index: 1000;
+}
+div#panic_region a, div#panic_region a:visited {
+    color: rgba(255,255,255,0.25);
+}
+
+div#terminated {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    text-align: right;
+    color: #CC2222;
+}
+
+/* # boxes */
+
+.box {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    border: 1px solid var(--main-text-color);
+    background: black;
+
+    box-shadow: 0 0 5px 5px rgba(0,0,0, 0.8);
+
+    overflow: hidden;
+}
+
+.box p {
+    text-align: center;
+    font-size: 10pt;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+
+/*  ## element - progress bar */
+
+.outsideBar {
+    background: black;
+    border: 1px solid var(--main-text-color);
+    height: 40px;
+    margin: 5px;
+}
+.outsideBar .insideBar {
+    background: var(--main-text-color);
+    height: 100%;
+    width: 0;
+}
+
+/* ## box type - progress bar */
+
+.progressBar {
+    min-width: 250px;
+    /* width is set by the text */
+    height: 75px;
+}
+
+.progressBar .outsideBar {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+}
+
+.progressBar .barExplanation {
+    font-size: 6pt;
+    margin-top: 58px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* ## box type - error box */
+
+.errorBox {
+    width: 275px;
+    min-height: 75px;
+    /* height is set by the text */
+    /* white-space: pre-wrap; */ /* this one wraps */
+}
+
+.errorBox h1.errorHeader {
+    color: var(--error-color);
+    animation: blink 500ms steps(1, start) infinite;
+    text-align: center;
+    margin: 15px;
+}
+
+/* ## box type - crypto box */
+
+.cryptoBox {
+    width: 242px;
+}
+
+.cryptoBox .outsideBar {
+    height: 22px;
+}
