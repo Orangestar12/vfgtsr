@@ -58,6 +58,18 @@ const SONG_DATABASE = [
         chill_out_time: 101.4,
         final_drop_time: 121.6,
         blackout_time: 162.2
+    },
+    {
+        // Desembra - Hit 'Em
+        id: 'paGOde3BO1Q',
+        freeze_time: 7.7,
+        drop_time: 8.6,
+        other_drop_times: [
+            26.1, 43.6, 61, 62.9, 63.4, 69.8, 70.6, 78.5, 88.5, 89.3, 89.6, 90.7, 93.1, 93.6, 93.8, 136.5, 137.3, 137.6, 138.7, 141.1, 141.5, 141.8, 145.2, 146.1, 146.3, 147.4, 149.9, 150.3, 150.5, 152.2, 152.3, 152.4, 152.5, 78.5, 96, 135.2, 152.7, 191.5, 195.2
+        ],
+        chill_out_time: 112.9,
+        final_drop_time: 117.8,
+        blackout_time: 187.6
     }
 ]
 
