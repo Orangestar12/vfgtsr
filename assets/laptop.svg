@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="350"
+   height="350"
+   viewBox="0 0 350 350.00001"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="laptop.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="2.0888418"
+     inkscape:cx="155.82798"
+     inkscape:cy="164.92393"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1302"
+       style="color:#000000;fill:#ffffff;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers stroke fill"
+       d="m 62.021484,53.367188 c -4.174214,6.68e-4 -7.557924,3.384378 -7.558593,7.558593 V 215.55664 c -1.22163,4.55918 -25.963461,39.37677 -40.360455,60.6521 -3.674893,3.6497 -3.529424,20.20146 3.850689,20.42407 H 332.05273 c 7.76563,-2.95043 6.85116,-16.3119 5.18063,-18.9475 -14.47776,-21.53802 -41.69039,-58.64524 -41.69039,-62.12867 V 60.925781 c -6.7e-4,-4.174213 -3.38438,-7.557923 -7.55859,-7.558593 z m 7.558594,15.117187 H 280.42578 V 207.99805 H 69.580078 Z M 64.583984,220.15234 H 285.42188 c -10e-6,0 34.31228,47.91964 34.27148,52.60352 -5.3e-4,2.02414 -1.64188,3.66453 -3.66602,3.66406 H 35.978516 c -2.024136,4.7e-4 -3.665494,-1.63991 -3.666016,-3.66406 -0.653544,-2.43906 32.271484,-52.60352 32.271484,-52.60352 z"
+       sodipodi:nodetypes="cccccccsccccccccccccccc" />
+    <path
+       d="M 78.805779,74.735822 H 270.84032 V 201.80241 H 78.805779 Z"
+       style="color:#000000;fill:#ffffff;stroke-width:0.910782;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers stroke fill"
+       id="path1791" />
+  </g>
+</svg>

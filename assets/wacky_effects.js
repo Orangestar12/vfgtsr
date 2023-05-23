@@ -117,8 +117,8 @@ function start_typing() {
 let items = [
     generate_progress_bar,
     generate_error_message,
-    generate_crypto_box//,
-    //generate_network_hacker
+    generate_crypto_box,
+    generate_network_hacker
 ]
 
 function get_more_intense() {
@@ -226,48 +226,99 @@ function generate_crypto_box() {
 }
 
 function generate_network_hacker() {
-    let box = generate_new_dialogue_box('box networkHacker');
+    let box = generate_new_dialogue_box('box flex networkHacker');
     
-    let createNewBox = () => {
+    // let pcs = [];
+    let activepcs = [];
+
+    function makeContainer(infectionRate) {
+        let cont = document.createElement('div');
+        cont.className = 'flex column';
+
+        if (box.childElementCount != 0) {
+            let filler = document.createElement('div');
+            filler.className = 'flex column';
+            let fillers = infectionRate - 1;
+            for (let i = 0; i < fillers; i++) {
+                let el = document.createElement('div');
+                el.className = 'connection';
+                filler.appendChild(el);
+            }
+            box.appendChild(filler);
+        }
+
+        box.appendChild(cont);
+        return cont;
+    }
+
+    let container = makeContainer(1);
+
+    function createNewBox() {
         // container
-        let pcbox = box.appendChild(document.createElement('div')).className = 'pcBox';
-    
+        let pcbox = document.createElement('div');
+        container.appendChild(pcbox).className = 'pcBox';
+
         // loading bar
-        box.appendChild(document.createElement('div')).className = 'progCircle';
+        let progCircle = document.createElement('div');
+        pcbox.appendChild(progCircle).className = 'progCircle';
     
         // computer
-        box.appendChild(document.createElement('div')).className = 'pc';
+        let pc = document.createElement('div');
+        let result = ['pc','laptop','phone'][randInt(0,3)];
+        pcbox.appendChild(pc).className = result;
+
+        // pcs.push(pcbox);
+        activepcs.push(pcbox);
+
+        pcbox.setAttribute('data-progress', '0');
+
         return pcbox
     }
     
-    let pc = createNewBox();
+    let infectionRate = 1;
 
-    pc.style.left = "50px";
-    pc.style.top = "50px";
+    createNewBox();
+    function progress() {
+        let index = randInt(0, activepcs.length);
 
-    let progressThis = function(size, box) {
-        size++;
+        let element = activepcs[index];
+        let loadingBar = element.querySelector('.progCircle');
 
-        let bar = box.querySelector('.progCircle');
+        let prog = parseInt(activepcs[index].getAttribute('data-progress'));
 
-        for(item of ['width','height']){
-            bar.style[item] = size + "%";
+        prog = Math.min(100, prog + randInt(6,32));
+
+        loadingBar.style.width = prog + '%';
+        loadingBar.style.height = prog + '%';
+
+        if(prog === 100) {
+            element.classList.add('complete');
+            activepcs.splice(index, 1);
+        } else {
+            index++;
         }
 
-        if (size == 100) {
-            // make two new pcs
-            for (let i=0;i<2;i++) {
-                let newBox = createNewBox();
-                p // left off here - 2020-8-31 4:29 AM
-                setTimeout(() => {progressThis(0, newBox)}, randInt(1,500));
+        element.setAttribute('data-progress', prog);
+
+        if (activepcs.length == 0) {
+            infectionRate++;
+
+            container = makeContainer(infectionRate);
+
+            for(let i = 0; i < infectionRate; i++) {
+                createNewBox();
             }
         }
-        else {
-            setTimeout(() => {progressThis(size, box)}, randInt(1,500)); // this sucks
+
+        if (infectionRate >= 5) {
+            box.remove();
+            generate_network_hacker();
+        } else {
+            setTimeout(progress, randInt(60,450));
         }
     }
 
-    setTimeout(() => {progressThis(0, pc)}, randInt(1,500));
+    setTimeout(progress, 100);
 }
 
 async function chill_out() {
@@ -302,6 +353,6 @@ function blackout() {
     }
     let terminate = document.body.appendChild(document.createElement('div'));
     terminate.id = 'terminated';
-    terminated.textContent = "Connection terminated.\nConnection forcibly closed by host.";
+    terminate.textContent = "Connection terminated.\nConnection forcibly closed by host.";
     document.body.className = "";
 }

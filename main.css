@@ -187,3 +187,66 @@ div#terminated {
 .cryptoBox .outsideBar {
     height: 22px;
 }
+
+/* ## box type - network hacker */
+
+.networkHacker {
+    width: 260px;
+    height: 150px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+.column {
+    flex-direction: column;
+}
+.flex > div {
+    margin: 2px;
+}
+
+.pcBox, .connection {
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.pc, .laptop, .phone {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 100%;
+}
+
+.pc {
+    background-image: url('./assets/pc.svg');
+}
+.laptop {
+    background-image: url('./assets/laptop.svg');
+}
+.phone {
+    background-image: url('./assets/phone.svg');
+}
+
+.progCircle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+    background-color: green;
+}
+
+.complete .progCircle {
+    background-color: red;
+}
+
+.connection {
+    background-image: url('./assets/connection.svg');
+    background-size: 100%;
+}
