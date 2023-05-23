@@ -279,6 +279,8 @@ function generate_network_hacker() {
 
     createNewBox();
     function progress() {
+        if (!box) { return } // Get Out Of Jail Free clause
+
         let index = randInt(0, activepcs.length);
 
         let element = activepcs[index];
