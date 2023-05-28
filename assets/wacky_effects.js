@@ -308,6 +308,7 @@ function generate_network_hacker() {
             container = makeContainer(infectionRate);
 
             for(let i = 0; i < infectionRate; i++) {
+                if (!box) { return } // help
                 createNewBox();
             }
         }
