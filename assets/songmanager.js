@@ -2,6 +2,8 @@
 
 let connection_monitor_element = null;
 
+let playing = false;
+
 // list of song metadata
 const SONG_DATABASE = [
     {
@@ -121,6 +123,7 @@ function checkDropTime() {
 }
 
 function play() {
+    playing = true;
     // go fullscreen
     // stupid fucking mobile webkit bug
     (

@@ -226,6 +226,7 @@ function generate_crypto_box() {
 }
 
 function generate_network_hacker() {
+    if (!playing) { return} // not the worst hack ive ever written
     let box = generate_new_dialogue_box('box flex networkHacker');
     
     // let pcs = [];
@@ -358,4 +359,5 @@ function blackout() {
     terminate.id = 'terminated';
     terminate.textContent = "Connection terminated.\nConnection forcibly closed by host.";
     document.body.className = "";
+    playing = false;
 }
