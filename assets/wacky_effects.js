@@ -226,7 +226,7 @@ function generate_crypto_box() {
 }
 
 function generate_network_hacker() {
-    if (!playing) { return} // not the worst hack ive ever written
+    if (!playing) { return } // not the worst hack ive ever written
     let box = generate_new_dialogue_box('box flex networkHacker');
     
     // let pcs = [];
@@ -280,7 +280,7 @@ function generate_network_hacker() {
 
     createNewBox();
     function progress() {
-        if (!box) { return } // Get Out Of Jail Free clause
+        if (!box) { return; } // Get Out Of Jail Free clause
 
         let index = randInt(0, activepcs.length);
 
@@ -297,8 +297,6 @@ function generate_network_hacker() {
         if(prog === 100) {
             element.classList.add('complete');
             activepcs.splice(index, 1);
-        } else {
-            index++;
         }
 
         element.setAttribute('data-progress', prog);
@@ -315,6 +313,8 @@ function generate_network_hacker() {
         }
 
         if (infectionRate >= 5) {
+            // Check if box got removed while this code ran
+            if (!box) { return; }
             box.remove();
             generate_network_hacker();
         } else {
